@@ -167,12 +167,39 @@ public class AddressBookSystem {
         }
     }
 
-    // Method to sort person by method
-    public void sortByPersonName(){
+    // Method to sort contact by person's name
+    public void sortByPersonName() {
         if (addressBook.isEmpty()) {
             System.out.println("Contact book is empty");
         } else {
             addressBook.stream().sorted(Comparator.comparing(Contact::getFirstName)).forEach(System.out::println);
+        }
+    }
+
+    // method to sort contact by city
+    public void sortingByCity() {
+        if (addressBook.isEmpty()) {
+            System.out.println("Contact book is empty");
+        } else {
+            addressBook.stream().sorted(Comparator.comparing(Contact::getCity)).forEach(System.out::println);
+        }
+    }
+
+    // Method to sort contact by state
+    public void sortingByState() {
+        if (addressBook.isEmpty()) {
+            System.out.println("Contact book is empty");
+        } else {
+            addressBook.stream().sorted(Comparator.comparing(Contact::getState)).forEach(System.out::println);
+        }
+    }
+
+    // Method to sort contact by zip
+    public void sortingByZip() {
+        if (addressBook.isEmpty()) {
+            System.out.println("Contact book is empty");
+        } else {
+            addressBook.stream().sorted(Comparator.comparing(Contact::getZip)).forEach(System.out::println);
         }
     }
 }
