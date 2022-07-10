@@ -15,7 +15,7 @@ public class AddressBookSystem {
         boolean condition = true;
 
         while (condition == true) {
-            System.out.println("1.add" + "\n" + "2.edit");
+            System.out.println("1.AddContact" + "\n" + "2.EditContact" + "\n" + "3.DeleteContact");
             int option = scanner.nextInt();
 
             switch (option) {
@@ -24,6 +24,9 @@ public class AddressBookSystem {
                     break;
                 case 2:
                     addressBookList.editContactDetails();
+                    break;
+                case 3:
+                    addressBookList.deleteContact();
                     break;
                 default:
                     System.out.println("Invalid Input");
@@ -61,7 +64,7 @@ public class AddressBookSystem {
 
 
         addressBook.add(details);
-        Contact details1 = new Contact(firstName, lastName, address, city, state, zip, phoneNumber, email);
+        Contact details1 = new Contact(firstName, lastName, address, city, state, email, zip, phoneNumber);
         addressBook.add(details1);
         System.out.print(addressBook);
         System.out.println("successfully added new contact");
@@ -76,7 +79,7 @@ public class AddressBookSystem {
                 System.out.println("select options");
                 System.out.println("\n0.First Name\n1.Last Name\n2.Address\n3.City\n4.State\n5.Zip\n6.Phone Number");
                 int editOption = scanner.nextInt();
-
+                //System.out.println("message"+editOption);
                 switch (editOption) {
                     case 1:
                         System.out.println("Enter a First name:");
@@ -121,4 +124,15 @@ public class AddressBookSystem {
         }
     }
 
+    // Method to delete contact
+    public void deleteContact() {
+        System.out.println("confirm the name to delete contact");
+        String confirmName=scanner.next();
+        for (int i = 0; i < addressBook.size(); i++) {
+            if(addressBook.get(i).getFirstName().equals(confirmName));
+            Contact person = addressBook.get(i);
+            addressBook.remove(person);
+        }
+        System.out.println(addressBook);
+    }
 }
