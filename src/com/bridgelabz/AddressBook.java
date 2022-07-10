@@ -14,7 +14,7 @@ public class AddressBook {
 
         boolean condition = true;
         while (condition) {
-            System.out.println("\n" + "1.AddNewAddressBook" + "\n" + "2.AddContact" + "\n" + "3.EditContact" + "\n" + "4.DeleteContact" + "\n" + "5.AddMultipleContact");
+            System.out.println("\n" + "1.AddNewAddressBook" + "\n" + "2.AddContact" + "\n" + "3.EditContact" + "\n" + "4.DeleteContact" + "\n" + "5.AddMultipleContact" + "\n" + "6.ShowAddressBookDetails");
             int option = scanner.nextInt();
             switch (option) {
                 case 1:
@@ -31,6 +31,9 @@ public class AddressBook {
                     break;
                 case 5:
                     addMultipleContact();
+                    break;
+                case 6:
+                    showAddressBookDetails();
                     break;
                 default:
                     System.out.println("Exit");
@@ -102,6 +105,19 @@ public class AddressBook {
             System.out.println("Address book doesn't exist");
         } else {
             addressBook.addMultipleContact();
+        }
+    }
+
+    // Method to display the address book details
+    public static void showAddressBookDetails() {
+        System.out.println("Enter Address Book System Name");
+        String bookName = scanner.next();
+        AddressBookSystem address = addressBookSystemMap.get(bookName);
+        AddressBookSystem addressBookSystem = new AddressBookSystem();
+        if (address == null) {
+            System.out.println("No book found this name");
+        } else {
+            addressBookSystem.showAddressBookDetails();
         }
     }
 }
