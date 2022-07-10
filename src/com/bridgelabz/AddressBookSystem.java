@@ -15,7 +15,7 @@ public class AddressBookSystem {
         boolean condition = true;
 
         while (condition == true) {
-            System.out.println("1.AddContact" + "\n" + "2.EditContact" + "\n" + "3.DeleteContact");
+            System.out.println("1.AddContact" + "\n" + "2.EditContact" + "\n" + "3.DeleteContact" + "\n" + "4.AddMultipleContact");
             int option = scanner.nextInt();
 
             switch (option) {
@@ -28,6 +28,9 @@ public class AddressBookSystem {
                 case 3:
                     addressBookList.deleteContact();
                     break;
+                case 4:
+                    addressBookList.addMultipleContact();
+                    break;
                 default:
                     System.out.println("Invalid Input");
             }
@@ -39,35 +42,24 @@ public class AddressBookSystem {
         Contact details = new Contact();
         System.out.println("Enter a first name:");
         details.setFirstName(scanner.next());
-        String firstName = scanner.next();
         System.out.println("Enter a last name:");
-        String lastName = scanner.next();
         details.setLastName(scanner.next());
         System.out.println("Enter a Address:");
-        String address = scanner.next();
         details.setAddress(scanner.next());
         System.out.println("Enter a City name:");
-        String city = scanner.next();
         details.setCity(scanner.next());
         System.out.println("Enter a state:");
-        String state = scanner.next();
         details.setState(scanner.next());
         System.out.println("Enter a email:");
-        String email = scanner.next();
         details.setEmail(scanner.next());
         System.out.println("Enter a zip code:");
-        int zip = scanner.nextInt();
         details.setZip(scanner.nextInt());
         System.out.println("Enter a phone number:");
-        long phoneNumber = scanner.nextLong();
         details.setPhoneNumber(scanner.nextLong());
 
-
         addressBook.add(details);
-        Contact details1 = new Contact(firstName, lastName, address, city, state, email, zip, phoneNumber);
-        addressBook.add(details1);
         System.out.print(addressBook);
-        System.out.println("successfully added new contact");
+        System.out.println("successfully added new contacts");
     }
 
     // Method to edit contact
@@ -134,5 +126,15 @@ public class AddressBookSystem {
             addressBook.remove(person);
         }
         System.out.println(addressBook);
+    }
+
+    // Method to add multiple contact
+    public void addMultipleContact() {
+        System.out.println("Enter Number of Contacts to Add into Contact Book");
+        int number = scanner.nextInt();
+        for (int i = 0; i < number; i++) {
+            addContactDetails();
+            System.out.println(i + 1 + " Contact added Successfully.. ");
+        }
     }
 }
