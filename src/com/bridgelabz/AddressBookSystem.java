@@ -202,4 +202,10 @@ public class AddressBookSystem {
             addressBook.stream().sorted(Comparator.comparing(Contact::getZip)).forEach(System.out::println);
         }
     }
+    public void countCity() {
+        System.out.println("Enter a city name ");
+        String input = scanner.next();
+        long count = addressBook.stream().filter(city -> city.getCity().equals(input)).count();
+        System.out.println("No of contacts Matched " + input + " city is : " + count);
+    }
 }
